@@ -11,11 +11,11 @@ router.post('/superadmin/signup', async (req, res) => {
     const existing = await SuperAdmin.findOne();
     if (existing) return res.status(400).json({ success: false, message: 'Super Admin already exists.' });
 
-    const { username, password, email, phone } = req.body;
+    const { username, password, email, phone, name } = req.body;
     if (!username || !password || !email || !phone)
       return res.status(400).json({ success: false, message: 'All fields required.' });
 
-    const sa = await SuperAdmin.create({ username, password, email, phone, name: 'Super Admin' });
+    const sa = await SuperAdmin.create({ username, password, email, phone, name: name || 'Super Admin' });
     const token = signToken({ id: sa._id, role: 'superadmin', username: sa.username });
     res.json({ success: true, token, user: { id: sa._id, username: sa.username, role: 'superadmin', name: sa.name } });
   } catch (err) {

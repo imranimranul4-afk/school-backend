@@ -5,8 +5,7 @@
 // ═══════════════════════════════════════════════════════════
 
 // 👇 Change this to your Render.com URL after deployment
-const API_BASE = 'https://mostafa-school-api.onrender.com';
-
+const API_BASE = 'https://school-backend-4ssa.onrender.com';
 // ── Token management ─────────────────────────────────────
 function getToken() { return localStorage.getItem('mpcs_token'); }
 function setToken(t) { localStorage.setItem('mpcs_token', t); }
